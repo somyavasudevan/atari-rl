@@ -107,5 +107,6 @@ class Atari(object):
 class FastAtariEnv(AtariEnv):
   def _get_image(self):
     # Don't reorder from rgb to bgr as we're converting to greyscale anyway
-    self.ale.getScreenRGB(self._buffer)  # says rgb but actually bgr
-    return self._buffer
+    return self.ale.getScreenRGB2()  # says rgb but actually bgr
+    #self.ale.getScreenRGB(self._buffer)  # says rgb but actually bgr
+#    return self._buffer
