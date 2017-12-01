@@ -38,36 +38,28 @@ class Network(object):
     
 
     #self.activation_summary(data_format)
-    conv1 = tf.layers.conv2d(
-    #    nhwc,
+    conv1 = tf.layers.dense(
         inputframe,
-        filters=32,
-        kernel_size=[8, 8],
-        strides=[4, 4],
         activation=tf.nn.relu,
         data_format = data_format,
         name='conv1')
+
     self.activation_summary(conv1)
-    conv2 = tf.layers.conv2d(
+    conv2 = tf.layers.dense(
         conv1,
-        filters=64,
-        kernel_size=[4, 4],
-        strides=[2, 2],
         activation=tf.nn.relu,
         data_format = data_format,
         name='conv2')
     self.activation_summary(conv2)
     conv3 = tf.layers.conv2d(
         conv2,
-        filters=64,
-        kernel_size=[3, 3],
-        strides=[1, 1],
         activation=tf.nn.relu,
         data_format = data_format,
         name='conv3')
+    
     self.activation_summary(conv3)
     print(conv3.shape)
-    conv_output = tf.reshape(conv3, [-1, 64 * 7 * 7])
+    conv_output = tf.reshape(conv3, [-1, 128 * 1 ])
 
     # Rescale gradients entering the last convolution layer
     dueling_scale = 1.0 / math.sqrt(2) if self.config.dueling else 1.0
