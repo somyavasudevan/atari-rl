@@ -17,7 +17,7 @@ flags.DEFINE_boolean('use_gpu', True, 'Whether to use gpu or not. cpu use NHWC a
 flags.DEFINE_float(
     'repeat_action_probability', 0.25,
     'Probability of ignoring the agent action and repeat last action')
-flags.DEFINE_string('input_shape', (128), 'Rescale input to this shape')
+flags.DEFINE_string('input_shape', (1,128), 'Rescale input to this shape')
 flags.DEFINE_integer('input_frames', 1, 'Number of frames to input')
 flags.DEFINE_integer(
     'max_noops', 30,
